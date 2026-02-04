@@ -15,7 +15,8 @@
 <body>
 
     <div class="container">
-        <h1>Yvonne, will you be my girlfriend? ❤️</h1>
+        <h1>Yvonne, will you be my girlfriend? </h1>
+        <img src="asking.png" alt="Question" style="margin-top: 10px; max-width: 80%;">
         <div class="button-row">
             <button id="yesBtn" onclick="celebrate()">Yes!</button>
             <button id="noBtn">No</button>
@@ -24,6 +25,12 @@
 
     <script>
         let yesScale = 1;
+
+        let noWords = ["You sure?", "Wrong answer!", "Pick again!", "Not this one!", "Surely not?", "Please reconsider!",
+        "Think again!", "You gotta be faster!", "Can't catch me!", "Nuh uh!", "Try again!", "Please say yes!",
+        "Almost had it!", "Keep trying!", "Not gonna happen!", "Give up?", "Missed me!", "Too slow!", "Nope!",
+        "Not today!", "Better luck next time!", "Bum!", "Denied!", "Out of reach!", "Keep chasing!", "So close!", "Try harder!"
+        ];
 
         const noBtn = document.getElementById('noBtn');
         noBtn.addEventListener('mouseover', moveButton);
@@ -35,6 +42,8 @@
             btn.style.position = 'fixed';
             btn.style.left = x + 'px';
             btn.style.top = y + 'px';
+            const randomIndex = Math.floor(Math.random() * noWords.length);
+            btn.textContent = noWords[randomIndex];
 
             const yesBtn = document.getElementById('yesBtn');
             yesScale = Math.min(10, yesScale + 0.1);
