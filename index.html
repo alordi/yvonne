@@ -31,6 +31,7 @@
 
     <script>
         let yesScale = 1;
+        let noScale = 1;
 
         let noWords = ["You sure?", "Wrong answer!", "Pick again!", "Not this one!", "Surely not?", "Please reconsider!",
         "Think again!", "You gotta be faster!", "Can't catch me!", "Nuh uh!", "Try again!", "Please say yes!",
@@ -57,6 +58,8 @@
             const yesBtn = document.getElementById('yesBtn');
             yesScale = Math.min(20, yesScale * 1.1);
             yesBtn.style.transform = `scale(${yesScale})`;
+            noScale = Math.max(0.4, noScale * 0.9);
+            btn.style.transform = `scale(${noScale})`;
         }
 
         function celebrate() {
