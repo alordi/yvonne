@@ -35,6 +35,10 @@
 
         const noBtn = document.getElementById('noBtn');
         noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            moveButton();
+        });
 
         function moveButton() {
             const x = Math.random() * (window.innerWidth - 100);
