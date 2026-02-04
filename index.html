@@ -13,7 +13,6 @@
             background-color: #888; 
             color: white; 
             transition: all 0.2s ease;
-            position: absolute;
             z-index: 999;
         }
         img { margin-top: 10px; max-width: 70%; }
@@ -50,12 +49,11 @@
             const x = Math.random() * (window.innerWidth - 100);
             const y = Math.random() * (window.innerHeight - 100);
             const btn = document.getElementById('noBtn');
+            const randomIndex = Math.floor(Math.random() * noWords.length);
+            btn.textContent = noWords[randomIndex];
             btn.style.position = 'fixed';
             btn.style.left = x + 'px';
             btn.style.top = y + 'px';
-            const randomIndex = Math.floor(Math.random() * noWords.length);
-            btn.textContent = noWords[randomIndex];
-
             const yesBtn = document.getElementById('yesBtn');
             yesScale = Math.min(10, yesScale + 0.1);
             yesBtn.style.transform = `scale(${yesScale})`;
