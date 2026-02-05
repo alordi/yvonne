@@ -37,11 +37,11 @@
         @keyframes floatUp {
             0% {
                 opacity: 1;
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(100vh) rotate(var(--rotation, 0deg));
             }
             100% {
                 opacity: 0;
-                transform: translateY(-100vh) rotate(360deg);
+                transform: translateY(-100vh) rotate(calc(var(--rotation, 0deg) + 360deg));
             }
         }
         
@@ -98,6 +98,8 @@
             heart.style.bottom = '-100px';
             
             const duration = 8 + Math.random() * 4;
+            const randomRotation = Math.random() * 360;
+            heart.style.setProperty('--rotation', randomRotation + 'deg');
             heart.style.animation = `floatUp ${duration}s ease-in forwards`;
             
             document.body.appendChild(heart);
@@ -106,6 +108,7 @@
         }
 
         // Create hearts continuously
+        createBackgroundHeart();
         setInterval(createBackgroundHeart, 1000);
 
         function moveButton() {
@@ -114,17 +117,17 @@
             
             const x = Math.random() * (window.innerWidth - 100);
             const y = Math.random() * (window.innerHeight - 100);
-            const btn = document.getElementById('noBtn');
+            const noBtn = document.getElementById('noBtn');
             const randomIndex = Math.floor(Math.random() * noWords.length);
-            btn.textContent = noWords[randomIndex];
-            btn.style.position = 'fixed';
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
+            noBtn.textContent = noWords[randomIndex];
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
             const yesBtn = document.getElementById('yesBtn');
             yesScale = Math.min(20, yesScale * 1.15);
             yesBtn.style.transform = `scale(${yesScale})`;
             noScale = Math.max(0.4, noScale * 0.9);
-            btn.style.transform = `scale(${noScale})`;
+            noBtn.style.transform = `scale(${noScale})`;
         }
 
         function celebrate() {
