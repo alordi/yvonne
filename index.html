@@ -44,24 +44,9 @@
                 transform: translateY(-100vh) rotate(calc(var(--rotation, 0deg) + 360deg));
             }
         }
-        
-        #counter {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            padding: 15px 20px;
-            border-radius: 10px;
-            font-size: 18px;
-            color: #ff4d6d;
-            font-weight: bold;            
-            z-index: 100;
-        }
     </style>
 </head>
 <body>
-
-    <div id="counter">Attempts To Say No: 0</div>
-
     <div class="container">
         <h1>Yvonne, will you be my girlfriend? </h1>
         <img src="asking.png">
@@ -74,7 +59,6 @@
     <script>
         let yesScale = 1;
         let noScale = 1;
-        let attempts = 0;
 
         let noWords = ["You sure?", "Wrong answer!", "Pick again!", "Not this one!", "Surely not?", "Please reconsider!",
         "Think again!", "You gotta be faster!", "Can't catch me!", "Nuh uh!", "Try again!", "Please say yes!",
@@ -110,10 +94,7 @@
         createBackgroundHeart();
         setInterval(createBackgroundHeart, 2000);
 
-        function moveButton() {
-            attempts++;
-            document.getElementById('counter').textContent = `Attempts To Say No: ${attempts}`;
-            
+        function moveButton() {            
             const x = Math.random() * (window.innerWidth - 100);
             const y = Math.random() * (window.innerHeight - 100);
             const noBtn = document.getElementById('noBtn');
