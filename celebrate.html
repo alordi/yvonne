@@ -10,6 +10,20 @@
         img { margin-top: 10px; max-width: 70%; }
         a { color: #ff4d6d; text-decoration: none; font-weight: bold; margin-top: 20px; display: inline-block; }
         a:hover { text-decoration: underline; }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -19,6 +33,29 @@
         <p>I knew you'd say yes...</p>
         <img src="happy.png">
     </div>
+
+    <script>
+        function createConfetti() {
+            const colors = ['#ff4d6d', '#ff69b4', '#ffb6c1', '#ffd700', '#ff6347', '#ffa500', '#ff1493', '#00bfff'];
+            const confettiCount = 100;
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animation = `fall ${2 + Math.random() * 2}s linear forwards`;
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                document.body.appendChild(confetti);
+
+                // Remove confetti after animation completes
+                setTimeout(() => confetti.remove(), 4500);
+            }
+        }
+
+        // Create confetti when page loads
+        window.addEventListener('load', createConfetti);
+    </script>
 
 </body>
 </html>
