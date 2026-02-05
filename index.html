@@ -36,8 +36,8 @@
         
         @keyframes floatUp {
             0% {
-                opacity: 1;
-                transform: translateY(100vh) rotate(var(--rotation, 0deg));
+                opacity: 0.6;
+                transform: translateY(30vh) rotate(var(--rotation, 0deg));
             }
             100% {
                 opacity: 0;
@@ -108,7 +108,7 @@
 
         // Create hearts continuously
         createBackgroundHeart();
-        setInterval(createBackgroundHeart, 1000);
+        setInterval(createBackgroundHeart, 2000);
 
         function moveButton() {
             attempts++;
